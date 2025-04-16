@@ -6,8 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: .NET Core CLI
-        uses: baruchiro/github-actions@0.0.1
-      - run: dotnet -v
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x' # Specify your .NET version
+
+      - name: run dotnet tool
+        run: dotnet -v
