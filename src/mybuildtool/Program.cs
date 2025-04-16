@@ -63,7 +63,7 @@ public class Program
         // recover registered command key values
         foreach (var key in command.Env.Keys.ToArray())
         {
-            Console.WriteLine($"Try to restore Environment variable {key}");
+            //Console.WriteLine($"Try to restore Environment variable {key}");
             string value = ciCdSupport.GetEnv(key);
             command.Env[key] = value;
         }
@@ -76,7 +76,7 @@ public class Program
             var value = command.Env[key];
             if (value != null)
             {
-                Console.WriteLine($"Persisted value {key}={value}");
+                //Console.WriteLine($"Persisted value {key}={value}");
                 ciCdSupport.SetEnv(key, command.Env[key]);
             }
         }
