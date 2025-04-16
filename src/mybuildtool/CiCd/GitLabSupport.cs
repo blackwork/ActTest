@@ -15,9 +15,9 @@ public class GitLabSupport : ICiCdSupport
         {
             // Write the variable to the .env file
             using (var writer = new StreamWriter(".env", true))
-                {
-                    writer.WriteLine($"MY_VARIABLE={value}");
-                }
+            {
+                writer.WriteLine($"{key}={value}");
+            }
 
             //Console.WriteLine($"Environment variable successfully set! Value={value}");
         }

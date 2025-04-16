@@ -11,6 +11,6 @@ public class TeamCitySupport : ICiCdSupport
 
     public void SetEnv(string key, string value)
     {
-        Console.WriteLine($"##teamcity[setParameter name='env.MY_VARIABLE' value='{value}']"); //NOSONAR
+        Console.WriteLine($"##teamcity[setParameter name='env.{key}' value='{value}']"); //NOSONAR
     }
 }

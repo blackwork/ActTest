@@ -25,7 +25,7 @@ public class GitHubSupport : ICiCdSupport
                 // Write the variable to the GITHUB_ENV file
                 using (var writer = new StreamWriter(_gitHubEnvPath, true))
                 {
-                    writer.WriteLine($"MY_VARIABLE={value}");
+                    writer.WriteLine($"{key}={value}");
                 }
 
                 //Console.WriteLine($"Environment variable successfully set! Value={value}");

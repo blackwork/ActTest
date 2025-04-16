@@ -90,15 +90,7 @@ public class Program
         try 
         {
             await program.RunBuildCommand(args);
-    Console.WriteLine();
-        Console.WriteLine("Environment Vars (Current Process)");
 
-        System.Collections.IDictionary dict = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.User);
-        foreach (var key in dict.Keys)
-        {
-            string val = dict[key].ToString();
-            Console.WriteLine($" {key} = {val}");
-        }
             return 0;
         }
         catch (Exception ex)
