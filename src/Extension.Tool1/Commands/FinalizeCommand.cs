@@ -5,7 +5,7 @@ namespace Extension.Tool1.Commands;
 
 public class FinalizeCommand : IBuildCommand
 {
-    public BuildCommands Command => BuildCommands.Initialie;
+    public BuildCommands Command => BuildCommands.Finalize;
 
     public Task Execute(string[] args)
     {

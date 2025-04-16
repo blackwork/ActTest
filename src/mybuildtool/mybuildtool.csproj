@@ -15,4 +15,11 @@
     <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
   </ItemGroup>
 
+  <Target Name="PostBuildCopy" AfterTargets="PostBuildEvent">
+    <ItemGroup>
+      <BuildOutput Include="$(OutputPath)**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BuildOutput)" DestinationFolder="..\..\tools" />
+  </Target>
+
 </Project>

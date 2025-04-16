@@ -5,7 +5,7 @@ namespace Extension.Tool1.Commands;
 
 public class RestoreCommand : IBuildCommand
 {
-    public BuildCommands Command => BuildCommands.Initialie;
+    public BuildCommands Command => BuildCommands.Restore;
 
     public Task Execute(string[] args)
     {
