@@ -11,9 +11,13 @@ public class RestoreCommand : IBuildCommand
     {
         // TODO
 
-        if (Env.TryGetValue(Constants.TestVar1, out string value))
+        if (Env.TryGetValue(Constants.TestVar1, out string value) && value != null)
         {
             Console.WriteLine($"Restored value: {value}");
+        }
+        else
+        {
+            Console.WriteLine($"Restore failed.");
         }
 
         return Task.CompletedTask;
