@@ -5,7 +5,7 @@ namespace Extension.Tool1.Commands;
 
 public class InitializeCommand : IBuildCommand
 {
-    public BuildCommands Command => BuildCommands.Initialie;
+    public BuildCommands Command => BuildCommands.Initialize;
 
     public Task Execute(string[] args)
     {

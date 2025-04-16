@@ -2,7 +2,7 @@ namespace Contracts;
 
 public enum BuildCommands
 {
-    Initialie,
+    Initialize,
     Restore,
     Build,
     Test,

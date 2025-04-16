@@ -9,7 +9,7 @@
             "request": "launch",
             "name": ".NET Core Launch",
             "program": "${workspaceFolder}/src/mybuildtool/bin/Debug/net8.0/mybuildtool.dll",
-            "args": ["build"],
+            "args": ["initialize"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"

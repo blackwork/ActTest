@@ -12,7 +12,7 @@ public class Tool1Extension : IBuildToolExtension
     {
         switch (command)
         {
-            case BuildCommands.Initialie:
+            case BuildCommands.Initialize:
                 return new Commands.InitializeCommand();
             case BuildCommands.Restore:
                 return new Commands.RestoreCommand();
