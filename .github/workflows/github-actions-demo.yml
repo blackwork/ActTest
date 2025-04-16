@@ -17,16 +17,15 @@ jobs:
       #- name: Make tool executable (if needed)
       #  run: chmod +x ./tools/mybuildtool.dll # Add this line if your tool needs execution permissions
 
-      - name: Prepare tool
-        run: echo "Preparing..."
+      - name: Run the custom .NET tool (initialize)
+        run: dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2
 
+      - name: Run the custom .NET tool (restore)
+        run: dotnet ./tools/mybuildtool.dll restore Arg1 Arg2
 
-      - name: Run the custom .NET tool (first run)
-        run: dotnet ./tools/mybuildtool.dll Arg1 Arg2
+      - name: Run the custom .NET tool (build)
+        run: dotnet ./tools/mybuildtool.dll build Arg3 Arg4
 
-      - name: Run the custom .NET tool (second run)
-        run: dotnet ./tools/mybuildtool.dll Arg3 Arg4
-
-      - name: Finalize
-        run: echo "Finalizing..."
+      - name: Run the custom .NET tool (finalize)
+        run: dotnet ./tools/mybuildtool.dll finalize Arg1 Arg2
         if: always()

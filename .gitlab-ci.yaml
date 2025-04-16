@@ -26,24 +26,25 @@ setup_dotnet:
     - export PATH="$HOME/.dotnet:$PATH"
 
 prepare_tool:
-  stage: prepare
+  stage: initialize
   script:
-    - echo "Preparing..."
+    - echo "Running custom .NET tool (Initialie)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2
 
 run_tool_first:
   stage: execute
   script:
-    - echo "Running custom .NET tool (first run)..."
-    - ~/.dotnet/dotnet ./tools/mybuildtool.dll Arg1 Arg2
+    - echo "Running custom .NET tool (Restore)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll restore Arg1 Arg2
 
 run_tool_second:
   stage: execute
   script:
-    - echo "Running custom .NET tool (second run)..."
-    - ~/.dotnet/dotnet ./tools/mybuildtool.dll Arg3 Arg4
+    - echo "Running custom .NET tool (Build)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll build Arg3 Arg4
 
 finalize:
   stage: finalize
   script:
-    - echo "Finalizing..."
-    - echo "Pipeline complete."
+    - echo "Running custom .NET tool (Finalize)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll finalize Arg3 Arg4

@@ -12,17 +12,17 @@
         <step name="Setup .NET" type="simpleRunner">
           <scriptContent>dotnet-install.sh --channel 8.0</scriptContent>
         </step>
-        <step name="Prepare Tool" type="simpleRunner">
-          <scriptContent>echo "Preparing..."</scriptContent>
+        <step name="Run Tool (initialize)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2</scriptContent>
         </step>
-        <step name="Run Tool First" type="simpleRunner">
-          <scriptContent>dotnet ./tools/mybuildtool.dll Arg1 Arg2</scriptContent>
+        <step name="Run Tool (restore)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll restore Arg1 Arg2</scriptContent>
         </step>
-        <step name="Run Tool Second" type="simpleRunner">
-          <scriptContent>dotnet ./tools/mybuildtool.dll Arg3 Arg4</scriptContent>
+        <step name="Run Tool (build)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll build Arg3 Arg4</scriptContent>
         </step>
         <step name="Finalize" type="simpleRunner" executeIf="always">
-          <scriptContent>echo "Finalizing..."</scriptContent>
+          <scriptContent>dotnet ./tools/mybuildtool.dll finalize Arg3 Arg4</scriptContent>
         </step>
       </steps>
       <vcsSettings>
