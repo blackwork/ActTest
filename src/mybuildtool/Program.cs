@@ -74,9 +74,9 @@ public class Program
         foreach (var key in command.Env.Keys.ToArray())
         {
             var value = command.Env[key];
-            Console.WriteLine($"Restored value {key}={value}");
             if (value != null)
             {
+                Console.WriteLine($"Persisted value {key}={value}");
                 ciCdSupport.SetEnv(key, command.Env[key]);
             }
         }
