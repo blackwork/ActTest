@@ -81,7 +81,7 @@ public class Program
         {
             await program.RunBuildCommand(args);
 
-            //return 0;
+            return 0;
         }
         catch (Exception ex)
         {
