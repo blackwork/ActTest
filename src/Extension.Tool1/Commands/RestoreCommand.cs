@@ -9,8 +9,6 @@ public class RestoreCommand : IBuildCommand
 
     public Task Execute(string[] args)
     {
-        // TODO
-
         if (Env.TryGetValue(Constants.TestVar1, out string value) && value != null)
         {
             Console.WriteLine($"Restored value: {value}");
@@ -19,6 +17,8 @@ public class RestoreCommand : IBuildCommand
         {
             Console.WriteLine($"Restore failed.");
         }
+
+        Console.WriteLine("Restore command not implemented.");
 
         return Task.CompletedTask;
     }

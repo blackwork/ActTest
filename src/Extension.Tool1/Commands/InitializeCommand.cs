@@ -9,7 +9,7 @@ public class InitializeCommand : IBuildCommand
 
     public Task Execute(string[] args)
     {
-        // TODO
+        Console.WriteLine("Initialize command not implemented.");
 
         var value = "Hello World";
         Env[Constants.TestVar1] = value;

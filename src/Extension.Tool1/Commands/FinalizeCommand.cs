@@ -9,7 +9,7 @@ public class FinalizeCommand : IBuildCommand
 
     public Task Execute(string[] args)
     {
-        // TODO
+        Console.WriteLine("Finalize command not implemented.");
 
         return Task.CompletedTask;
     }

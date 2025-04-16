@@ -19,13 +19,13 @@ public class Tool1Extension : IBuildToolExtension
             case BuildCommands.Build:
                 return new Commands.BuildCommand();
             case BuildCommands.Test:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.TestCommand();
             case BuildCommands.Deploy:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.DeployCommand();
             case BuildCommands.Finalize:
                 return new Commands.FinalizeCommand();
             default:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.CustomCommand();
         }
     }
 }

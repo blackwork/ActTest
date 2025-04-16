@@ -2,13 +2,13 @@ using Contracts;
 
 namespace Extension.Tool1.Commands;
 
-public class BuildCommand : IBuildCommand
+public class DeployCommand : IBuildCommand
 {
-    public BuildCommands Command => BuildCommands.Build;
+    public BuildCommands Command => BuildCommands.Deploy;
 
     public Task Execute(string[] args)
     {
-        Console.WriteLine("Build command not implemented.");
+        Console.WriteLine("Deploy command not implemented.");
 
         return Task.CompletedTask;
     }
