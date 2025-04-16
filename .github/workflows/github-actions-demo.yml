@@ -16,3 +16,9 @@ jobs:
 
       - name: run dotnet tool
         run: dotnet --version
+
+      #- name: Make tool executable (if needed)
+      #  run: chmod +x ./tools/mybuildtool.dll # Add this line if your tool needs execution permissions
+
+      - name: Run the custom .NET tool
+        run: dotnet run ./tools/mybuildtool.dll ARGUMENTS # Replace `ARGUMENTS` with any required arguments
