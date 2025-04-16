@@ -92,8 +92,7 @@ else if (string.Equals(Environment.GetEnvironmentVariable("CI"), "true", StringC
     // }
 
 }
-else if (string.Equals(Environment.GetEnvironmentVariable("TC"), "true", StringComparison.InvariantCultureIgnoreCase) &&
-    Environment.GetEnvironmentVariable("GITLAB_CI") != null)
+else if (Environment.GetEnvironmentVariable("TEAMCITY_VERSION") != null)
 {
     var myVariable = Environment.GetEnvironmentVariable("MY_VARIABLE");
 
