@@ -9,11 +9,11 @@ public class InitializeCommand : IBuildCommand
 
     public Task Execute(string[] args)
     {
-        Console.WriteLine("Initialize command not implemented.");
-
         var value = "Hello World";
         Env[Constants.TestVar1] = value;
         Console.WriteLine($"Update value to: {value}");
+
+        Console.WriteLine("Initialize command not implemented.");
 
         return Task.CompletedTask;
     }

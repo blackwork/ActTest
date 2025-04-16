@@ -26,6 +26,15 @@ jobs:
       - name: Run the custom .NET tool (build)
         run: dotnet ./tools/mybuildtool.dll build Arg3 Arg4
 
+      - name: Run the custom .NET tool (test)
+        run: dotnet ./tools/mybuildtool.dll test Arg3 Arg4
+
+      - name: Run the custom .NET tool (deploy)
+        run: dotnet ./tools/mybuildtool.dll deploy Arg3 Arg4
+
+      - name: Run the custom .NET tool (custom)
+        run: dotnet ./tools/mybuildtool.dll custom Arg3 Arg4
+
       - name: Run the custom .NET tool (finalize)
         run: dotnet ./tools/mybuildtool.dll finalize Arg1 Arg2
         if: always()
