@@ -21,4 +21,4 @@ jobs:
       #  run: chmod +x ./tools/mybuildtool.dll # Add this line if your tool needs execution permissions
 
       - name: Run the custom .NET tool
-        run: dotnet run ./tools/mybuildtool.dll ARGUMENTS # Replace `ARGUMENTS` with any required arguments
+        run: dotnet ./tools/mybuildtool.dll Arg1 Arg2
