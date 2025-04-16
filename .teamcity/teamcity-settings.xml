@@ -21,6 +21,15 @@
         <step name="Run Tool (build)" type="simpleRunner">
           <scriptContent>dotnet ./tools/mybuildtool.dll build Arg3 Arg4</scriptContent>
         </step>
+        <step name="Run Tool (test)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll test Arg3 Arg4</scriptContent>
+        </step>
+        <step name="Run Tool (deploy)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll deploy Arg3 Arg4</scriptContent>
+        </step>
+        <step name="Run Tool (custom)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll custom Arg3 Arg4</scriptContent>
+        </step>
         <step name="Finalize" type="simpleRunner" executeIf="always">
           <scriptContent>dotnet ./tools/mybuildtool.dll finalize Arg3 Arg4</scriptContent>
         </step>
