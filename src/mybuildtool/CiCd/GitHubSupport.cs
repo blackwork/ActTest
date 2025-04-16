@@ -4,6 +4,8 @@ public class GitHubSupport : ICiCdSupport
 {
     private readonly string _gitHubEnvPath;
 
+    public string EnvironmentType => "GitHub"; 
+
     public GitHubSupport()
     {
         _gitHubEnvPath = Environment.GetEnvironmentVariable("GITHUB_ENV");

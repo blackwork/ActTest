@@ -2,6 +2,8 @@ namespace mybuildtool.CiCd;
 
 public class TeamCitySupport : ICiCdSupport
 {
+    public string EnvironmentType => "TeamCity"; 
+
     public string GetEnv(string key)
     {
         return Environment.GetEnvironmentVariable(key);

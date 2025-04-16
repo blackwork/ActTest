@@ -2,6 +2,8 @@ namespace mybuildtool.CiCd;
 
 public class GitLabSupport : ICiCdSupport
 {
+    public string EnvironmentType => "GitLab"; 
+
     public string GetEnv(string key)
     {
         return Environment.GetEnvironmentVariable(key);

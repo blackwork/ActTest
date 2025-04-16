@@ -46,8 +46,11 @@ public class Program
         }
 
         var ciCdSupport = CiCdFactory.Create();
-
         var toolType = "Tool1";
+
+        Console.WriteLine($"Detected CI/CD environment type: {ciCdSupport.EnvironmentType}");
+        Console.WriteLine($"Running tool type: {toolType}");
+
         var buildToolExtension = GetBuildToolExtension(toolType);
 
         if (buildToolExtension == null) 

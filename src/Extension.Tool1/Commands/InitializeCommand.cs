@@ -13,6 +13,7 @@ public class InitializeCommand : IBuildCommand
 
         var value = "Hello World";
         Env[Constants.TestVar1] = value;
+        Console.WriteLine($"Update value to: {value}");
 
         return Task.CompletedTask;
     }
