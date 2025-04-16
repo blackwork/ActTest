@@ -13,17 +13,17 @@ public class Tool1Extension : IBuildToolExtension
         switch (command)
         {
             case BuildCommands.Initialie:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.InitializeCommand();
             case BuildCommands.Restore:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.RestoreCommand();
             case BuildCommands.Build:
-                return new BuildCommand();
+                return new Commands.BuildCommand();
             case BuildCommands.Test:
                 throw new NotImplementedException($"Requested build command '{command}' not implemented");
             case BuildCommands.Deploy:
                 throw new NotImplementedException($"Requested build command '{command}' not implemented");
             case BuildCommands.Finalize:
-                throw new NotImplementedException($"Requested build command '{command}' not implemented");
+                return new Commands.FinalizeCommand();
             default:
                 throw new NotImplementedException($"Requested build command '{command}' not implemented");
         }

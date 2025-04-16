@@ -1,6 +1,6 @@
 using Contracts;
 
-namespace Extension.Tool1;
+namespace Extension.Tool1.Commands;
 
 public class BuildCommand : IBuildCommand
 {
@@ -13,8 +13,5 @@ public class BuildCommand : IBuildCommand
         return Task.CompletedTask;
     }
 
-    public Dictionary<string, string> Env { get; } = new Dictionary<string, string> 
-    {
-        { "MY_VAR_1", null }
-    };
+    public Dictionary<string, string> Env { get; } = new Dictionary<string, string>(Constants.DefaultEnv);
 }
