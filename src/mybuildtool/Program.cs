@@ -63,7 +63,9 @@ public class Program
         // recover registered command key values
         foreach (var key in command.Env.Keys.ToArray())
         {
-            command.Env[key] = ciCdSupport.GetEnv(key);
+            Console.WriteLine($"Try to restore Environment variable {key}");
+            string value = ciCdSupport.GetEnv(key);
+            command.Env[key] = value;
         }
 
         await command.Execute(args.Skip(1).ToArray());
@@ -72,6 +74,7 @@ public class Program
         foreach (var key in command.Env.Keys.ToArray())
         {
             var value = command.Env[key];
+            Console.WriteLine($"Restored value {key}={value}");
             if (value != null)
             {
                 ciCdSupport.SetEnv(key, command.Env[key]);
