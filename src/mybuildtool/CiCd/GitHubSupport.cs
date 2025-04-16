@@ -28,7 +28,7 @@ public class GitHubSupport : ICiCdSupport
                     writer.WriteLine($"MY_VARIABLE={value}");
                 }
 
-                //Console.WriteLine($"Environment variable successfully set! Value={value}");
+                Console.WriteLine($"Environment variable successfully set! Value={value}");
             }
             catch (Exception ex)
             {
