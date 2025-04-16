@@ -11,6 +11,8 @@ public class InitializeCommand : IBuildCommand
     {
         // TODO
 
+        Env[Constants.TestVar1] = "Hello World";
+
         return Task.CompletedTask;
     }
 

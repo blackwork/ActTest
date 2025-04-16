@@ -68,7 +68,11 @@ public class Program
         // persist registered command key values
         foreach (var key in command.Env.Keys.ToArray())
         {
-            ciCdSupport.SetEnv(key, command.Env[key]);
+            var value = command.Env[key];
+            if (value != null)
+            {
+                ciCdSupport.SetEnv(key, command.Env[key]);
+            }
         }
     }
 
