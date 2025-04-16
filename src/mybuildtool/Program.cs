@@ -93,7 +93,7 @@ public class Program
     Console.WriteLine();
         Console.WriteLine("Environment Vars (Current Process)");
 
-        System.Collections.IDictionary dict = Environment.GetEnvironmentVariables();
+        System.Collections.IDictionary dict = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.User);
         foreach (var key in dict.Keys)
         {
             string val = dict[key].ToString();
