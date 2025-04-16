@@ -14,14 +14,19 @@ jobs:
         with:
           dotnet-version: '8.x' # Specify your .NET version
 
-      - name: run dotnet tool
-        run: dotnet --version
-
       #- name: Make tool executable (if needed)
       #  run: chmod +x ./tools/mybuildtool.dll # Add this line if your tool needs execution permissions
+
+      - name: Prepare tool
+        run: echo "Preparing..."
+
 
       - name: Run the custom .NET tool (first run)
         run: dotnet ./tools/mybuildtool.dll Arg1 Arg2
 
       - name: Run the custom .NET tool (second run)
         run: dotnet ./tools/mybuildtool.dll Arg3 Arg4
+
+      - name: Finalize
+        run: echo "Finalizing..."
+        if: always()

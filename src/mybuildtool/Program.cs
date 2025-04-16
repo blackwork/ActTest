@@ -11,7 +11,7 @@ foreach (var arg in args)
 }
 
 
-if (string.Equals(Environment.GetEnvironmentVariable("$GITHUB_ACTIONS"), "true", StringComparison.InvariantCultureIgnoreCase))
+if (string.Equals(Environment.GetEnvironmentVariable("GITHUB_ACTIONS"), "true", StringComparison.InvariantCultureIgnoreCase))
 {
     Console.WriteLine("Running in a GitHub Actions environment!");
 }
@@ -38,7 +38,7 @@ var myVariable = Environment.GetEnvironmentVariable("MY_VARIABLE");
 // Check if custom var exists
 if (!string.IsNullOrEmpty(myVariable))
 {
-    Console.WriteLine($"Value: {myVariable}");
+    Console.WriteLine($"MY_VARIABLE Value: {myVariable}");
 }
 // Check if the path exists
 else if (!string.IsNullOrEmpty(githubEnvPath))
