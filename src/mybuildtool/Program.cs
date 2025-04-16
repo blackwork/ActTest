@@ -91,6 +91,41 @@ public class Program
         {
             await program.RunBuildCommand(args);
 
+
+       // Get the path to the GITHUB_ENV file from the environment variable
+            var githubEnvPath = Environment.GetEnvironmentVariable("GITHUB_ENV");
+            var myVariable = Environment.GetEnvironmentVariable("MY_VARIABLE");
+
+            // Check if custom var exists
+            if (!string.IsNullOrEmpty(myVariable))
+            {
+                Console.WriteLine($"MY_VARIABLE Value: {myVariable}");
+            }
+            // Check if the path exists
+            else if (!string.IsNullOrEmpty(githubEnvPath))
+            {
+                try
+                {
+                    string value = $"Hello from C# ({DateTime.Now:U})";
+                    // Write the variable to the GITHUB_ENV file
+                    using (var writer = new StreamWriter(githubEnvPath, true))
+                    {
+                        writer.WriteLine($"MY_VARIABLE={value}");
+                    }
+
+                    Console.WriteLine($"Environment variable successfully set! Value={value}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while writing to GITHUB_ENV: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("GITHUB_ENV and MY_VARIABLE environment variable not found.");
+            }
+
+
             return 0;
         }
         catch (Exception ex)
