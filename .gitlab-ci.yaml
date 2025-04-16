@@ -1,0 +1,49 @@
+stages:
+  - prepare
+  - execute
+  - finalize
+
+variables:
+  DOTNET_VERSION: "8.x" # Specify your .NET version
+
+before_script:
+  - echo "🎉 The job was automatically triggered by a push event."
+  - apt-get update && apt-get install -y wget # Install dependencies if necessary
+
+checkout_code:
+  stage: prepare
+  script:
+    - echo "Checking out code..."
+    - git clone $CI_REPOSITORY_URL .
+
+setup_dotnet:
+  stage: prepare
+  script:
+    - echo "Setting up .NET..."
+    - wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+    - chmod +x dotnet-install.sh
+    - ./dotnet-install.sh -c $DOTNET_VERSION
+    - export PATH="$HOME/.dotnet:$PATH"
+
+prepare_tool:
+  stage: prepare
+  script:
+    - echo "Preparing..."
+
+run_tool_first:
+  stage: execute
+  script:
+    - echo "Running custom .NET tool (first run)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll Arg1 Arg2
+
+run_tool_second:
+  stage: execute
+  script:
+    - echo "Running custom .NET tool (second run)..."
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll Arg3 Arg4
+
+finalize:
+  stage: finalize
+  script:
+    - echo "Finalizing..."
+    - echo "Pipeline complete."

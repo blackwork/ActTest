@@ -1,0 +1,38 @@
+<project>
+  <buildTypes>
+    <buildType id="GitHubActionsDemo">
+      <name>GitHub Actions Demo</name>
+      <steps>
+        <step name="Trigger Event" type="simpleRunner">
+          <scriptContent>echo "🎉 The job was automatically triggered by a push event."</scriptContent>
+        </step>
+        <step name="Checkout Code" type="vcs">
+          <checkoutMode>ON_AGENT</checkoutMode>
+        </step>
+        <step name="Setup .NET" type="simpleRunner">
+          <scriptContent>dotnet-install.sh --channel 8.0</scriptContent>
+        </step>
+        <step name="Prepare Tool" type="simpleRunner">
+          <scriptContent>echo "Preparing..."</scriptContent>
+        </step>
+        <step name="Run Tool First" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll Arg1 Arg2</scriptContent>
+        </step>
+        <step name="Run Tool Second" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll Arg3 Arg4</scriptContent>
+        </step>
+        <step name="Finalize" type="simpleRunner" executeIf="always">
+          <scriptContent>echo "Finalizing..."</scriptContent>
+        </step>
+      </steps>
+      <vcsSettings>
+        <vcsRoot id="GitHubRepo" checkoutRules="+:refs/heads/*=." />
+      </vcsSettings>
+    </buildType>
+  </buildTypes>
+  <triggers>
+    <trigger type="vcsTrigger">
+      <vcsSettings vcsRootId="GitHubRepo"/>
+    </trigger>
+  </triggers>
+</project>
