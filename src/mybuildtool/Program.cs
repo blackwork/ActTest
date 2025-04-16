@@ -112,5 +112,5 @@ else if (Environment.GetEnvironmentVariable("TEAMCITY_VERSION") != null)
 }
 else
 {
-    Console.WriteLine("Not running in GitHub or GitLab Actions.");
+    Console.WriteLine("Not running in GitHub or GitLab Actions or TeamCity.");
 }
