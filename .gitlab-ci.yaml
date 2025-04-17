@@ -28,15 +28,16 @@ setup_dotnet:
 prepare_tool:
   stage: initialize
   script:
-    - echo "Running custom .NET tool (Initialie)..."
+    - echo "Running custom .NET tool (Initialize)..."
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2
 
 run_tool:
   stage: execute
   script:
-    - echo "Running custom .NET tool (Restore)..."
+    - echo "Running custom .NET tool (build pipeline)..."
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll restore Arg1 Arg2
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll build Arg1 Arg2
+    - ~/.dotnet/dotnet ./tools/mybuildtool.dll analyze Arg1 Arg2
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll test Arg1 Arg2
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll deploy Arg1 Arg2
     - ~/.dotnet/dotnet ./tools/mybuildtool.dll custom Arg1 Arg2

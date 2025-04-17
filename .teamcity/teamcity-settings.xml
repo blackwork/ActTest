@@ -1,7 +1,7 @@
 <project>
   <buildTypes>
-    <buildType id="GitHubActionsDemo">
-      <name>GitHub Actions Demo</name>
+    <buildType id="TeamCityDemo">
+      <name>TeamCity Demo</name>
       <steps>
         <step name="Trigger Event" type="simpleRunner">
           <scriptContent>echo "🎉 The job was automatically triggered by a push event."</scriptContent>
@@ -20,6 +20,9 @@
         </step>
         <step name="Run Tool (build)" type="simpleRunner">
           <scriptContent>dotnet ./tools/mybuildtool.dll build Arg3 Arg4</scriptContent>
+        </step>
+        <step name="Run Tool (analyze)" type="simpleRunner">
+          <scriptContent>dotnet ./tools/mybuildtool.dll analyze Arg3 Arg4</scriptContent>
         </step>
         <step name="Run Tool (test)" type="simpleRunner">
           <scriptContent>dotnet ./tools/mybuildtool.dll test Arg3 Arg4</scriptContent>

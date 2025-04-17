@@ -18,6 +18,8 @@ public class Tool1Extension : IBuildToolExtension
                 return new Commands.RestoreCommand();
             case BuildCommands.Build:
                 return new Commands.BuildCommand();
+            case BuildCommands.Analyze:
+                return new Commands.AnalyzeCommand();
             case BuildCommands.Test:
                 return new Commands.TestCommand();
             case BuildCommands.Deploy:

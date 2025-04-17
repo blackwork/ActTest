@@ -30,6 +30,9 @@ jobs:
       - name: Run the custom .NET tool (build)
         run: dotnet ./tools/mybuildtool.dll build Arg3 Arg4
 
+      - name: Run the custom .NET tool (analyze)
+        run: dotnet ./tools/mybuildtool.dll analyze Arg3 Arg4
+
       - name: Run the custom .NET tool (test)
         run: dotnet ./tools/mybuildtool.dll test Arg3 Arg4
 
