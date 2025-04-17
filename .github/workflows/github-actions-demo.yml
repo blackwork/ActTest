@@ -17,24 +17,28 @@ jobs:
       #- name: Make tool executable (if needed)
       #  run: chmod +x ./tools/mybuildtool.dll # Add this line if your tool needs execution permissions
 
-      - name: Run the custom .NET tool (initialize)
-        run: dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2
+      - name: Run the custom .NET tool (all)
+        run: dotnet ./tools/mybuildtool.dll initialize+restore+build+test+deploy+custom+finalize Arg1 Arg2
 
-      - name: Run the custom .NET tool (restore)
-        run: dotnet ./tools/mybuildtool.dll restore Arg1 Arg2
 
-      - name: Run the custom .NET tool (build)
-        run: dotnet ./tools/mybuildtool.dll build Arg3 Arg4
+      #- name: Run the custom .NET tool (initialize)
+      #  run: dotnet ./tools/mybuildtool.dll initialize Arg1 Arg2
 
-      - name: Run the custom .NET tool (test)
-        run: dotnet ./tools/mybuildtool.dll test Arg3 Arg4
+      #- name: Run the custom .NET tool (restore)
+      #  run: dotnet ./tools/mybuildtool.dll restore Arg1 Arg2
 
-      - name: Run the custom .NET tool (deploy)
-        run: dotnet ./tools/mybuildtool.dll deploy Arg3 Arg4
+      #- name: Run the custom .NET tool (build)
+      #  run: dotnet ./tools/mybuildtool.dll build Arg3 Arg4
 
-      - name: Run the custom .NET tool (custom)
-        run: dotnet ./tools/mybuildtool.dll custom Arg3 Arg4
+      #- name: Run the custom .NET tool (test)
+      #  run: dotnet ./tools/mybuildtool.dll test Arg3 Arg4
 
-      - name: Run the custom .NET tool (finalize)
-        run: dotnet ./tools/mybuildtool.dll finalize Arg1 Arg2
-        if: always()
+      #- name: Run the custom .NET tool (deploy)
+      #  run: dotnet ./tools/mybuildtool.dll deploy Arg3 Arg4
+
+      #- name: Run the custom .NET tool (custom)
+      #  run: dotnet ./tools/mybuildtool.dll custom Arg3 Arg4
+
+      #- name: Run the custom .NET tool (finalize)
+      #  run: dotnet ./tools/mybuildtool.dll finalize Arg1 Arg2
+      #  if: always()

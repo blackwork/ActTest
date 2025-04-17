@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "mybuildtool": {
+      "commandName": "Project",
+      "commandLineArgs": "restore+build"
+    }
+  }
+}

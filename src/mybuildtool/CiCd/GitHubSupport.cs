@@ -22,11 +22,15 @@ public class GitHubSupport : ICiCdSupport
         {
             try
             {
-                // Write the variable to the GITHUB_ENV file
+                // Write the variable to the GITHUB_ENV file (to handover to next tool call.
                 using (var writer = new StreamWriter(_gitHubEnvPath, true))
                 {
                     writer.WriteLine($"{key}={value}");
                 }
+
+
+                // update environment variable (for commands in a row)
+                Environment.SetEnvironmentVariable(key, value);
 
                 //Console.WriteLine($"Environment variable successfully set! Value={value}");
             }

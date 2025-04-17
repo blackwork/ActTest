@@ -40,44 +40,54 @@ public class Program
         {
             throw new ArgumentException("No build command specified.");
         }
-        if (!Enum.TryParse<BuildCommands>(args[0], true, out var commandName))
+
+        var toolType = "Tool1";
+
+        IEnumerable<BuildCommands> commandNames = args[0].Split('+').Select(l =>
         {
-            throw new InvalidOperationException($"Requested build command '{args[0]}' not found defined");
-        }
+            if (!Enum.TryParse<BuildCommands>(l, true, out var commandName))
+            {
+                throw new InvalidOperationException($"Requested build command '{args[0]}' not found defined");
+            }
+
+            return commandName;
+        });
+
 
         var ciCdSupport = CiCdFactory.Create();
-        var toolType = "Tool1";
 
         Console.WriteLine($"Detected CI/CD environment type: {ciCdSupport.EnvironmentType}");
         Console.WriteLine($"Running tool type: {toolType}");
 
         var buildToolExtension = GetBuildToolExtension(toolType);
-
-        if (buildToolExtension == null) 
+        if (buildToolExtension == null)
         {
             throw new InvalidOperationException($"Requested build tool type extension '{toolType}' not installed");
         }
 
-        var command = buildToolExtension.GetCommand(commandName);
-
-        // recover registered command key values
-        foreach (var key in command.Env.Keys.ToArray())
+        foreach (var commandName in commandNames)
         {
-            //Console.WriteLine($"Try to restore Environment variable {key}");
-            string value = ciCdSupport.GetEnv(key);
-            command.Env[key] = value;
-        }
+            var command = buildToolExtension.GetCommand(commandName);
 
-        await command.Execute(args.Skip(1).ToArray());
-
-        // persist registered command key values
-        foreach (var key in command.Env.Keys.ToArray())
-        {
-            var value = command.Env[key];
-            if (value != null)
+            // recover registered command key values
+            foreach (var key in command.Env.Keys.ToArray())
             {
-                //Console.WriteLine($"Persisted value {key}={value}");
-                ciCdSupport.SetEnv(key, command.Env[key]);
+                //Console.WriteLine($"Try to restore Environment variable {key}");
+                string value = ciCdSupport.GetEnv(key);
+                command.Env[key] = value;
+            }
+
+            await command.Execute(args.Skip(1).ToArray());
+
+            // persist registered command key values
+            foreach (var key in command.Env.Keys.ToArray())
+            {
+                var value = command.Env[key];
+                if (value != null)
+                {
+                    //Console.WriteLine($"Persisted value {key}={value}");
+                    ciCdSupport.SetEnv(key, command.Env[key]);
+                }
             }
         }
     }

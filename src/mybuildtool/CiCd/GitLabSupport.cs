@@ -19,6 +19,9 @@ public class GitLabSupport : ICiCdSupport
                 writer.WriteLine($"{key}={value}");
             }
 
+            // update environment variable (for commands in a row)
+            Environment.SetEnvironmentVariable(key, value);
+            
             //Console.WriteLine($"Environment variable successfully set! Value={value}");
         }
         catch (Exception ex)
